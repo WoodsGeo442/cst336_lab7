@@ -46,22 +46,28 @@ $(document).ready(function(){
                 "orientation": $("#orientation").val()
             },
             success: function(result, status){
-                let index1 = Math.floor(Math.random() * result.hits.length);
-                let index2 = Math.floor(Math.random() * result.hits.length);
-                let index3 = Math.floor(Math.random() * result.hits.length);
-                let index4 = Math.floor(Math.random() * result.hits.length);
+                if(result.hits.length > 0){
+                    let index1 = Math.floor(Math.random() * result.hits.length);
+                    let index2 = Math.floor(Math.random() * result.hits.length);
+                    let index3 = Math.floor(Math.random() * result.hits.length);
+                    let index4 = Math.floor(Math.random() * result.hits.length);
                 
-                $("#first").attr('src', result.hits[index1].previewURL);
-                $("#second").attr('src', result.hits[index2].previewURL);
-                $("#third").attr('src', result.hits[index3].previewURL);
-                $("#fourth").attr('src', result.hits[index4].previewURL);
+                    $("#first").attr('src', result.hits[index1].previewURL);
+                    $("#second").attr('src', result.hits[index2].previewURL);
+                    $("#third").attr('src', result.hits[index3].previewURL);
+                    $("#fourth").attr('src', result.hits[index4].previewURL);
                 
-                $("#likesPic1").html(result.hits[index1].likes);
-                $("#likesPic2").html(result.hits[index2].likes);
-                $("#likesPic3").html(result.hits[index3].likes);
-                $("#likesPic4").html(result.hits[index4].likes);
+                    $("#likesPic1").html(result.hits[index1].likes);
+                    $("#likesPic2").html(result.hits[index2].likes);
+                    $("#likesPic3").html(result.hits[index3].likes);
+                    $("#likesPic4").html(result.hits[index4].likes);
+                } else if(result.hits.length == 0){
+                    alert("No Results. Please enter a different keyword.")
+                }
+                
             
             }
+            
         });
     });
 });
